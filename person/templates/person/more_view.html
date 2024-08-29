@@ -1,0 +1,20 @@
+<!-- for more details View this html displays lists all other links like
+    Employee, Public Representatives, Cabinet_Committee, subject_committee,
+    Sections and all other needed.
+-->
+{% extends 'base.html' %}
+{% block contents %}
+<div class="more_links">
+    <ol>
+        <li> <a href="{% url 'person:event_view' person=2 %}">जनप्रतिनिधिहरु</a></li>
+        <li> <a href="{% url 'person:event_view' person=2 %}">कर्मचारिहरु</a></li>
+        <li> <a href="{% url 'person:event_view' person=2 %}">शाखाहरु</a></li>
+        <li> <a href="{% url 'person:event_view' person=2 %}">विषयगत समितिहरु</a></li>
+        <li> <a href="{% url 'person:event_view' person=2 %}">कार्यपालिका</a></li>
+
+    </ol>
+</div>
+
+
+
+{% block %}

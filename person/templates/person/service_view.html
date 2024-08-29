@@ -1,0 +1,19 @@
+<!-- this template is for service view primarily
+this view displays all the service on the left side and details of selected
+service in the right of it 
+-->
+{% extends 'base.html' %}
+{% block contents %}
+<div class="service_links">
+    <ol>
+        {% for service in services %}
+        <li>{{service.name}}</li>
+    </ol>
+</div>
+<div class="service_view">
+    <h1> service details</h1>
+</div>
+
+
+
+{% block %}

@@ -1,0 +1,34 @@
+1. HomeView Personal:
+Public Representative List 
+    name, post, home_ward, phone_number,
+Employee lists
+    name, post, section, phone_number
+Sections:
+    name, section_head, Phon number
+@login_required
+    Post lists
+    Employee lists
+    Public Representative List 
+    Shakha lists
+    events list
+
+2. All the lists above is filtered to 5 Numbers and every lists has a more link
+    to view all data,
+    if a user is logged in, every lists will have add new, edit, delete button for each.
+
+3. Schedules
+4. Employee_Training Profile
+5. Event model and add_new Event is successful in backend.
+6. GPT Chat: https://chatgpt.com/share/62322905-786b-42f0-97f8-f883175106cc
+7. end_time defined in models
+8. define event viewer
+        event_person, and Events
+9. add field person for the event. 
+10.  added a choice lists for event_person 3 choices for now.
+11. Entry.objects.order_by(Coalesce().desc()) ***
+12. .reverse()
+13. profile_view: a view for chair, vc, and cao to display a profile and their events
+14. profile_view.html: that renders profile_view
+15. <p>{{ model_instance._meta.get_field('field_name').verbose_name }}: {{ model_instance.field_name }}</p>
+16. sending dictionary instead of object itself??
+17. sent object for now

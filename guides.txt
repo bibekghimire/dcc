@@ -1,0 +1,28 @@
+
+Naming Convention
+https://google.github.io/styleguide/pyguide.html#316-naming:~:text=3.16.4%20Guidelines%20derived,3.16.5%20Mathematical%20Notation
+
+Functions	lower_with_under()	_lower_with_under()
+Classes	CapWords	_CapWords
+Method Names	lower_with_under()	_lower_with_under() (protected)
+Function/Method Parameters	lower_with_under	
+Local Variables	lower_with_under	
+Global/Class Constants	CAPS_WITH_UNDER	_CAPS_WITH_UNDER
+
+
+*******************************************************
+Model Inheritance: 
+Abstract Base Classes
+Abstract base classes allow you to define common fields and methods that can be shared among multiple models, but they don't create a separate table in the database for the base class.
+
+
+**********************
+verbose_name
+provide a human-readable name for a model field or model class.
+for model class, define it on meta
+
+=============================================
+nepali date 
+convert nepali and english date
+
+

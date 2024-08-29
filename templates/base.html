@@ -1,0 +1,45 @@
+{% load static %}
+ <!DOCTYPE html>
+ <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        {% block title %}
+        <title>Annapurna</title>
+        {% endblock %}
+        <link rel="stylesheet" href="{% static 'css/styles1.css' %}">
+        {% block app_css %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="TitleBanner">
+            <div class="logo"> 
+               <a href="{% url 'annapurnahome' %}"><img src="{% static 'images/emblemnepal.png' %}" alt="emblem nepal" ></a> 
+            </div>
+            <div class="content">
+                <div class="municipal-name">
+                    <p id="name">अन्नपूर्ण गाउँपालिका</p>
+                    <p id="office">गाउँकार्यपालिकाको कार्यालय</p>
+                </div>
+                <div class="municipal-office">
+                    
+                </div>
+            </div>
+            <div class="logo"> 
+                <img src="{% static 'images/apgpemblem.png' %}" alt="emblem nepal ">
+            </div>
+        </div>
+        {% block contents %}
+            <h1>homepage</h1>
+            <ul style="list-style-type: none;">
+                <li> <a href="{% url 'person:event_view' person=1 %}">अध्यक्ष</a></li>
+                <li> <a href="{% url 'person:event_view' person=2 %}">उपाध्यक्ष</a></li>
+                <li> <a href="{% url 'person:event_view' person=3 %}">प्रमुख प्रशासकीय अधिकृत</a></li>
+                <li> <a href="{% url 'person:event_view' person=2 %}">नागरिक वडापत्र</a></li>
+                <li> <a href="{% url 'person:event_view' person=2 %}">थप विवरण</a></li>
+            </ul>
+  
+        {% endblock %}
+
+        <footer>&copy; 2024 Bibek Ghimire</footer>
+    </body>
+ </html>

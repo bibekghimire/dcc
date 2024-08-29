@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block contents %} 
+    <h1>जनप्रतिनिधिहरु</h1>
+        <table>
+            <caption>जनप्रतिनिधिहरु</caption>
+            <tr>
+                <th>नाम</th>
+                <th>पद</th>
+                <th>फोन नं</th>
+                <th>वडा</th>
+            </tr>
+            {%for item in public_representative %}
+            <tr>
+                <td>{{item.get_full_name}}</td>
+                <td>{{item.post.name}}</td>
+                <td>{{item.mobile_number}} </td>
+                <td>{{item.ward}} </td>
+            </tr>
+            {%endfor%}
+        </table>
+        
+    <h1>कर्मचारिहरु</h1>
+    <table>
+        <caption>कर्मचारिहरु</caption>
+        <tr>
+            <th>नाम</th>
+            <th>पद</th>
+            <th>फोन नं</th>
+            <th>शाखा</th>
+        </tr>
+        {%for item in employees %}
+        <tr>
+            <td>{{item.get_full_name}}</td>
+            <td>{{item.post.name}}</td>
+            <td>{{item.mobile_number}} </td>
+            <td>{{item.section}} </td>
+        </tr>
+        {%endfor%}
+    </table>
+
+    <h1> शाखाहरु</h1>
+    <table>
+        <caption>शाखाहरु</caption>
+        <tr>
+            <th>शाखाको नाम</th>
+            <th>शाखा प्रमुख</th>
+        </tr>
+        {% for item in sections %}
+        <tr>
+            <td> {{item.name}} </td>
+            <td> {{item.head}} </td>
+        </tr>
+        {%endfor%}
+    </table>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% load static %}
+{% extends 'base.html' %}
+{% block title %}
+<title></title>
+{% endblock %}
+{block app_css %}
+
+{% endblock %}
+
+{% block contents %}
+<div class="sidebar_left">
+    <ul style="list-style-type: none;">
+        {% for pubrep in pubreps %}
+        <li>pubrep.name</li>
+    </ul>
+    {% for pubrep in pubreps %}
+
+</div>
+<div class="middle_content">
+
+
+</div>
+<div class="sidebar_right">
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% block contents %}
+<h1>व्यक्तिसँग सम्बन्धित बिबरण हरु</h1>
+<ul>
+    {% for model in all_models %}
+    <li><a href="#">{{ model.verbose_name_plural }}</a></li>
+    {% empty %}
+    <li>No models available</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

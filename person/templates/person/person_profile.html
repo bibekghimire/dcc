@@ -1,0 +1,37 @@
+<!-- this file displays a person's all details in main content and
+in left and right sidebars list of public representatives and employees  
+    -->
+{% extends 'base.html' %}
+
+{% block contents %} 
+
+<div class="side_bar_left">
+    <ul style="list-style-type: none;">
+        {% for pub_rep in pub_reps %}
+        <li>{{ pub_rep.get_full_name }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="main_content">
+    <p>नामः {{person_object.get_full_name}}</p>
+    <p>पदः {{person_object.post}}</p>
+    <p>मोबाईल नंः{{person_object.mobile_number}}</p>
+    <p>email: {{person_object.email}}</p>
+    {% if person_object.ward %}
+    <p>वडाः {{person_object.ward}}</p>
+    {% else %}
+    <p>शाखाः {{person_object.section}}</p>
+    {% endif %}
+    <p></p>
+    
+</div>
+<div class="sidebar_right">
+    <ul style="list-style-type: none;">
+        {% for emp in employee %}
+        <li>{{ emp.get_full_name }}</li>
+        {% endfor %}
+    </ul>
+</div>
+ 
+{% endblock %}
