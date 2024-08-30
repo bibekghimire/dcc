@@ -72,9 +72,11 @@ def public_representative_view(request):
 
 
 def event_view(request,person=1):
-    
     now=timezone.localtime()
-    person_obj=models.PublicRepresentative.objects.filter(post__name=models.Choices.event_person_choices()[person-1][1]).first()
+    model=[None,models.PublicRepresentative,models.PublicRepresentative,models.Employee][person]
+    person_obj=model.objects.filter(
+        post__name=models.Choices.event_person_choices()[person-1][1]
+        ).first()
     events=models.Event.objects.filter(event_person=person).order_by('ev_date','event_time').reverse()
     current_event=events.filter(
         ev_date=now.date(),
@@ -105,5 +107,7 @@ def profile_view(request,pub_emp,pk):
     }
     return render(request,'person/person_profile.html',context)
 
-def service_view(request,serv):
-    return None
+def service_view(request,serv=1):
+    return render(request,'person/service_view.html')
+def more_view(request):
+    return render(request,'person/more_view.html')
