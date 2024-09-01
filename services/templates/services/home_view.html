@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+    <h1> सेवाहरु</h1>
+
+    {% for service in services %}
+    <h2><a href="#">{{service.name}}</a></h2>
+
+    {% endfor %}
+
+{% endblock %}

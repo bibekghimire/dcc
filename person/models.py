@@ -162,23 +162,23 @@ class subject_committee(models.Model):
                                 verbose_name="सदस्य सचिव"
                                 )
     
-class Services(models.Model):
-    name=models.CharField(
-        max_length=200,
-        verbose_name="सेवा"
-    )
-    required_docs=models.TextField()
-    serv_fee=models.PositiveBigIntegerField(
-        verbose_name='लाग्ने शुल्क'
-    )
-    serv_time=models.CharField(
-        max_length=200,
-        verbose_name='लाग्ने समय'
-    )
-    section=models.ForeignKey(
-        Section,
-        verbose_name='सम्बन्धित शाखा',
-        on_delete=models.SET_NULL,
-        related_name='services',
-        null=True 
-    )
+# class Services(models.Model):
+#     name=models.CharField(
+#         max_length=200,
+#         verbose_name="सेवा"
+#     )
+#     required_docs=models.TextField()
+#     serv_fee=models.PositiveBigIntegerField(
+#         verbose_name='लाग्ने शुल्क'
+#     )
+#     serv_time=models.CharField(
+#         max_length=200,
+#         verbose_name='लाग्ने समय'
+#     )
+#     section=models.ForeignKey(
+#         Section,
+#         verbose_name='सम्बन्धित शाखा',
+#         on_delete=models.SET_NULL,
+#         related_name='services',
+#         null=True 
+#     )

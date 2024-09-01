@@ -17,13 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from .views import home_view
-from person.views import service_view, more_view
+from person.views import more_view
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home_view, name='annapurnahome'),
-    path('services/<int:serv>',service_view,name='services'),
+    path('services',include("services.urls")),
     path('more',more_view,name="more_view"),
     path('person/',include("person.urls")),
     path('users/',include("users.urls")),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
