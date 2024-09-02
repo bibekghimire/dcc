@@ -10,7 +10,9 @@ form_classes={
     'post':(forms.PostForm,models.Post),
     'section':(forms.SectionForm, models.Section),
     'employee':(forms.EmployeeForm, models.Employee),
-    'public_representative':(forms.PublicRepresentativeForm,models.PublicRepresentative),
+    'public_representative':(forms.PublicRepresentativeForm,
+                             models.PublicRepresentative
+                             ),
     'event':(forms.EventForm,models.Event),
 
 }
@@ -107,7 +109,19 @@ def profile_view(request,pub_emp,pk):
     }
     return render(request,'person/person_profile.html',context)
 
-def service_view(request,serv=1):
-    return render(request,'person/service_view.html')
+
 def more_view(request):
     return render(request,'person/more_view.html')
+
+def section_committee_view(request,committee_id=0):
+    # this view is to display section list and subject committtee in left and right side
+    # while displaying the detail for selected 
+    sections=models.Section.objects.all()
+    committees=models.SubjectCommittee.objects.all()
+    cabinet=models.PublicRepresentative.objects.filter(cabinet_member=True)
+    context={'sections':sections,
+             'committees':committees,
+             'cabinet':cabinet
+             }
+    return render(request,'person/section_committee.html')
+    

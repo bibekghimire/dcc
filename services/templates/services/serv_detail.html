@@ -5,7 +5,7 @@
 
     {% for service in services %}
     <h2><a href="{% url 'services:service_view' pk=service.id %}">{{service.name}}</a></h2>
-
     {% endfor %}
-
+    <h2>{{active_service.name}}</h2>
+    <h3>{{active_service.section}}</h3>
 {% endblock %}

@@ -21,6 +21,8 @@ from person.views import more_view
 from django.conf import settings
 from django.conf.urls.static import static
 
+from person.views import section_committee_view
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home_view, name='annapurnahome'),
@@ -28,6 +30,7 @@ urlpatterns = [
     path('more',more_view,name="more_view"),
     path('person/',include("person.urls")),
     path('users/',include("users.urls")),
+    path('committees/<int:committee_id>',section_committee_view,name='section_committee')
 ]
 
 if settings.DEBUG:

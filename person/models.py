@@ -39,7 +39,13 @@ class Choices:
             (2,'उपाध्यक्ष'),
             (3,'प्रमुख प्रसाशकीय अधिकृत')
         ]
-    
+    @classmethod
+    def male_female_choices(cls):
+        return[
+            (1,'महिला'),
+            (2,'पुरुष'),
+            (3,'अहिले उल्लेख नगरम')
+        ]
     
 
 class Post(models.Model):
@@ -72,6 +78,7 @@ class Section(models.Model):
 class PersonalInfo(models.Model):
     first_name=models.CharField(max_length=100)
     last_name=models.CharField(max_length=100)
+    gender=models.IntegerField(verbose_name='लिङ्ग',null=True,choices=Choices.male_female_choices,default=1)
     mobile_number = models.CharField(
         max_length=10,verbose_name='सम्पर्क नं',
         validators=[
@@ -83,7 +90,7 @@ class PersonalInfo(models.Model):
         ]
     )
 
-    email=models.EmailField(default='hello@example.com',verbose_name='ईमेल')
+    email=models.EmailField(default='hello@example.com',verbose_name='ईमेल',null=True)
     post=models.ForeignKey(Post,
                            on_delete=models.SET_DEFAULT,
                            default=1,
@@ -121,7 +128,7 @@ class PublicRepresentative(PersonalInfo):
     ward=models.IntegerField(
         choices=Choices.WardChoices,default=1,verbose_name='वडा'
     )
-
+    cabinet_member=models.BooleanField(verbose_name="कार्यपालिका सदस्य")
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
     class Meta:
@@ -142,7 +149,7 @@ class Event(models.Model):
     def __str__(self):
         return self.name +':' + self.str_date + self.event_location
     
-class subject_committee(models.Model):
+class SubjectCommittee(models.Model):
     name=models.CharField(
         max_length=100, verbose_name='विषयगत समितिको नाम')
     coordinator=models.OneToOneField(

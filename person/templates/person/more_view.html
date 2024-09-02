@@ -8,10 +8,9 @@
     <ol>
         <li> <a href="{% url 'person:event_view' person=2 %}">जनप्रतिनिधिहरु</a></li>
         <li> <a href="{% url 'person:event_view' person=2 %}">कर्मचारिहरु</a></li>
-        <li> <a href="{% url 'person:event_view' person=2 %}">शाखाहरु</a></li>
-        <li> <a href="{% url 'person:event_view' person=2 %}">विषयगत समितिहरु</a></li>
-        <li> <a href="{% url 'person:event_view' person=2 %}">कार्यपालिका</a></li>
-
+        <li> <a href="{% url 'section_committee' committee_id=2 %}">शाखाहरु</a></li>
+        <li> <a href="{% url 'section_committee' committee_id=1 %}">विषयगत समितिहरु</a></li>
+        <li> <a href="{% url 'section_committee' committee_id=0 %}">कार्यपालिका</a></li>
     </ol>
 </div>
 {% endblock %}
