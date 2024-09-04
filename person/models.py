@@ -147,9 +147,16 @@ class Event(models.Model):
     end_time=models.TimeField(auto_now=False, auto_now_add=False,null=True, blank=True)
     event_location=models.CharField(max_length=300,verbose_name='कार्यक्रम स्थान',null=True)
     def __str__(self):
-        return self.name +':' + self.str_date + self.event_location
+        return f"{Choices.event_person_choices()[self.event_person-1][1]}: {self.name}>> {self.str_date} --> {self.event_location}"
     
 class SubjectCommittee(models.Model):
+    class Meta:
+        ordering=['coordinator']
+        verbose_name='विषयगत समिति'
+        verbose_name_plural='विषयगत समितिहरु'
+
+    def __str__(self):
+        return f"{self.name}"
     name=models.CharField(
         max_length=100, verbose_name='विषयगत समितिको नाम')
     coordinator=models.OneToOneField(
@@ -160,7 +167,7 @@ class SubjectCommittee(models.Model):
             related_name='coordinated_committee',
             verbose_name='समिति संयोजक'
         )
-    members=models.ManyToManyField(PublicRepresentative,blank=True, verbose_name="सदस्य हरु")
+    members=models.ManyToManyField(PublicRepresentative,blank=True, verbose_name="सदस्य हरु",related_name='involved_committees')
     secretary=models.ForeignKey(Employee,
                                 on_delete=models.SET_NULL,
                                 null=True,

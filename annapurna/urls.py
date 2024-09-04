@@ -30,7 +30,7 @@ urlpatterns = [
     path('more',more_view,name="more_view"),
     path('person/',include("person.urls")),
     path('users/',include("users.urls")),
-    path('committees/<int:committee_id>',section_committee_view,name='section_committee')
+    path('committees/<int:type>/<int:pk>',section_committee_view,name='section_committee')
 ]
 
 if settings.DEBUG:

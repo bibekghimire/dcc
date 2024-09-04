@@ -7,6 +7,6 @@ urlpatterns=[
     path('',views.HomeView, name='home'),
     path('all_models',views.all_models, name='allmodels'),
     path('events/<int:person>/', views.event_view,name='event_view'),
-    path('profile/<int:pub_emp>/<int:pk>',views.profile_view,name='personal_profile'),
+    path('profile/<int:pub_emp>/<int:pk>',views.profile_view,name='profile_view'),
 ]
 

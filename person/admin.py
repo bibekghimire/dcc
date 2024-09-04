@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib import admin
-from .models import Post, Section, Employee, PublicRepresentative, Choices, Event
+from .models import Post, Section, Employee, PublicRepresentative, Choices, Event, SubjectCommittee
 # app_models = models.__dict__
 
 # for model_name in app_models:
@@ -34,6 +34,7 @@ class EventAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Post)
+admin.site.register(SubjectCommittee)
 admin.site.register(Section)
 admin.site.register(Employee, EmployeeAdmin)
 admin.site.register(PublicRepresentative, PublicRepresentativeAdmin)

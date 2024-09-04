@@ -7,6 +7,31 @@ by default displays
 
 {% extends 'base.html' %}
 {% block contents %}
-<h1>section and committee</h1>
-<h2>left mid right</h2>
+<h1>सकृय समितिहरु</h1>
+<div class="left_column">
+<ul style="list-style-type: none;">
+    <p> विषयगत समितिहरु</p>
+    {% for committee in committees %}
+    <li><a href="{% url 'section_committee' type=1 pk=committee.id %}">{{committee.name}}</a></li>
+    {% endfor %}
+</ul>
+</div>
+<div class="middle_column">
+    {% if type == 0 %}
+        <p class="title">कार्यपालिका</p>
+    {% elif type == 1 %}
+        <p class="title">विषयगत समिति: {{ active_committee.name }}</p>
+
+    {% elif type == 2 %}
+        <p class="title">शाखाः {{ active_committee.name }}</p>
+    {% endif %}
+</div>
+<div class="right_column">
+    <ul style="list-style-type: none;">
+        <p> शाखाहरु</p>
+        {% for section in sections %}
+        <li><a href="{% url 'section_committee' type=2 pk=section.id %}">{{section.name}}</a></li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

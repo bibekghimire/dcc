@@ -93,35 +93,52 @@ def event_view(request,person=1):
 
 def profile_view(request,pub_emp,pk):
     pub_reps=models.PublicRepresentative.objects.all()
-    employee=models.Employee.objects.all()
+    employees=models.Employee.objects.all()
     model=[None,models.Employee, models.PublicRepresentative,][pub_emp]
+    post=[None,'प्रमुख प्रशासकीय अधिकृत','अध्यक्ष'][pub_emp]
+    
     try:
-        person_object=model.objects.get(id=pk)
-        # exclude_fields = ['id', 'weight', 'status','first_name', 'last_name']
-        # fields=[field for field in person_object._meta.fields if field.name not in exclude_fields]
+        if pk==0:
+            person_object=model.objects.all().filter(post__name=post).first()
+            print(person_object)
+            title=model._meta.verbose_name
+        else:
+            person_object=model.objects.get(id=pk)
+            title=model._meta.verbose_name
     except:
         return render(request, 'person/404.html', status=404)
     context={
         'pub_reps':pub_reps,
-        'employee':employee,
+        'employees':employees,
         'person_object':person_object,
+        'title':title
         # 'fields':fields,
     }
-    return render(request,'person/person_profile.html',context)
+    return render(request,'person/pr_emp_view.html',context)
 
 
 def more_view(request):
     return render(request,'person/more_view.html')
 
-def section_committee_view(request,committee_id=0):
+def section_committee_view(request,type=0,pk=0):
     # this view is to display section list and subject committtee in left and right side
     # while displaying the detail for selected 
     sections=models.Section.objects.all()
     committees=models.SubjectCommittee.objects.all()
     cabinet=models.PublicRepresentative.objects.filter(cabinet_member=True)
+    if type==0:
+        active_committee=cabinet
+    elif type==1:
+        active_committee=committees.filter(id=pk).first()
+    elif type==2:
+        active_committee=sections.filter(id=pk).first()
+        print(active_committee)
+
     context={'sections':sections,
              'committees':committees,
-             'cabinet':cabinet
+             'cabinet':cabinet,
+             'active_committee':active_committee,
+             'type':type
              }
-    return render(request,'person/section_committee.html')
+    return render(request,'person/section_committee.html',context)
     
