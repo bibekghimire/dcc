@@ -100,7 +100,7 @@ def profile_view(request,pub_emp,pk):
     try:
         if pk==0:
             person_object=model.objects.all().filter(post__name=post).first()
-            print(person_object)
+            
             title=model._meta.verbose_name
         else:
             person_object=model.objects.get(id=pk)

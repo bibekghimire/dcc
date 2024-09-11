@@ -23,7 +23,7 @@ class Choices:
         return [(i,WardStrings[i-1]) for i in range(1,ward+1)]
     @classmethod
     def catagory(cls):
-        return[(1,'कर्मचारी'),(2,'जनप्रतिनिधि')]
+        return[(1,'कर्मचारी'),(2,'जनप्रतिनिधि'),]
     
     @classmethod
     def services(cls):
