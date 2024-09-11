@@ -1,0 +1,51 @@
+body{
+    background-color: rgb(150, 151, 201);
+}
+
+.TitleBanner{
+    display:flex;
+    justify-content: space-between;
+
+    width: 98%;
+    
+} 
+
+.TitleBanner .logo{
+    width:100px;
+    height: auto; 
+}
+
+.TitleBanner .logo img{
+    width:100%;
+    height:quto;
+    margin: 2px;
+}
+
+.TitleBanner .content{
+    display: flex;
+    flex-direction: column;
+    border:2px solid white;
+    flex-grow: 3;
+    text-align: left;
+    #name{
+        margin:0px;
+        color: rgb(196, 11, 11);
+        font-weight: bolder;
+        font-size: 50px;
+    }
+
+    #office{
+        margin:0px;
+        color: white;
+    }
+}
+
+.apgpHome{
+    display: flex;
+    flex-direction: horizontal;
+    a{
+        margin: 4px;
+        border: 2px solid black;
+        box-shadow: inset;
+    }
+}
