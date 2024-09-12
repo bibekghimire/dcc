@@ -85,9 +85,9 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'annapurna',
-        'USER':'python',
-        'PASSWORD':' ',
+        'NAME': 'annapurna_db',
+        'USER':'annapurna',
+        'PASSWORD':'Abc@1234',
         'HOST': 'localhost',
         'PORT': '3306',
     }
