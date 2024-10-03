@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+import dj_database_url
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 env_path = load_dotenv(os.path.join(BASE_DIR,'.env'))
@@ -27,10 +29,13 @@ load_dotenv(env_path)
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-j7+36+f+b93wp+s3cgn64=)z4b!1m@dwm9w@vmhe@4&@$2=x#5'
+#SECRET_KEY = 'django-insecure-j7+36+f+b93wp+s3cgn64=)z4b!1m@dwm9w@vmhe@4&@$2=x#5'
+
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-j7+36+f+b93wp+s3cgn64=)z4b!1m@dwm9w@vmhe@4&@$2=x#5')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+#DEBUG = False
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['127.0.0.1','localhost','192.168.0.110']
 
@@ -97,14 +102,19 @@ DATABASES = {
     #     'HOST': 'localhost',
     #     'PORT': '3306',
     # }
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'annapurna',
-        'USER':'python',
-        'PASSWORD':' ',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'annapurna',
+    #     'USER':'python',
+    #     'PASSWORD':' ',
+    #     'HOST': 'localhost',
+    #     'PORT': '3306',
+    # }
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL'),
+        conn_max_age=500,
+        conn_health_checks=True,
+    )
 }
 
 
