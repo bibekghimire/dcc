@@ -1,0 +1,13 @@
+
+#the following files and directories will be ignored
+node_modules/
+*.log
+.env
+/staticfiles/
+
+
+
+#the following files will not be ignored
+!staticfiles/icons/
+!staticfiles/icons/*.svg
+!staticfiles/icons/*.png
