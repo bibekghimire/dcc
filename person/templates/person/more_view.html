@@ -3,14 +3,26 @@
     Sections and all other needed.
 -->
 {% extends 'base.html' %}
+{% load static %}
+{% block app_css %}
+    <link rel="stylesheet" href="{% static 'css/more_view.css' %}">
+{% endblock %}
 {% block contents %}
 <div class="more_links">
-    <ol>
-        <li> <a href="{% url 'person:profile_view' pub_emp=2 pk=0%}">जनप्रतिनिधिहरु</a></li>
-        <li> <a href="{% url 'person:profile_view' pub_emp=1 pk=0%}">कर्मचारिहरु</a></li>
-        <li> <a href="{% url 'section_committee' type=0 pk=0 %}">शाखाहरु</a></li>
-        <li> <a href="{% url 'section_committee' type=0 pk=0%}">विषयगत समितिहरु</a></li>
-        <li> <a href="{% url 'section_committee' type=0 pk=0 %}">कार्यपालिका</a></li>
-    </ol>
+    <div class="box">
+        <a href="{% url 'person:profile_view' pub_emp=2 pk=0 %}">जनप्रतिनिधिहरु</a>
+    </div>
+    <div class="box">
+        <a href="{% url 'person:profile_view' pub_emp=1 pk=0 %}">कर्मचारिहरु</a>
+    </div>
+    <div class="box">
+        <a href="{% url 'section_committee' type=0 pk=0 %}">शाखाहरु</a>
+    </div>
+    <div class="box">
+        <a href="{% url 'section_committee' type=0 pk=0 %}">विषयगत समितिहरु</a>
+    </div>
+    <div class="box">
+        <a href="{% url 'section_committee' type=0 pk=0 %}">कार्यपालिका</a>
+    </div>
 </div>
 {% endblock %}

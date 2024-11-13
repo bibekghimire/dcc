@@ -1,0 +1,103 @@
+body {
+    text-align: center;
+}
+
+.container {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    padding: 20px;
+    text-align: left;
+}
+
+.left_column {
+    width: 20%;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-right: 2px solid #ddd;
+}
+
+.left_column p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.left_column ul {
+    list-style-type: none;
+}
+
+.left_column ul li {
+    margin-bottom: 10px;
+}
+
+.left_column ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.left_column ul li a:hover {
+    color: #0056b3;
+}
+
+/* Middle Column */
+.middle_column {
+    flex-grow: 1;
+    padding: 20px;
+    margin: 0 20px;
+    background-color: #fafafa;
+}
+
+.middle_column p.title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Table Styling for Committees and Sections */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f4f4f4;
+}
+
+/* Right Column */
+.right_column {
+    width: 20%;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-left: 2px solid #ddd;
+}
+
+.right_column p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.right_column ul {
+    list-style-type: none;
+}
+
+.right_column ul li {
+    margin-bottom: 10px;
+}
+
+.right_column ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.right_column ul li a:hover {
+    color: #0056b3;
+}

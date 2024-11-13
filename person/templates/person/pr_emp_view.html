@@ -1,37 +1,71 @@
-<!-- 
-this html displays the list of public representatives on the left and public
-representative list on the right while selected employee's or public represenativs 
-detail profile is displayed on the middle section.  
--->
 {% extends 'base.html' %}
+{% load static %}
+{% block app_css %}
+    <link rel="stylesheet" href="{% static 'css/pr_emp_view.css' %}">
+{% endblock %}
 {% block contents %}
 <h1>जनप्रतिनिधि/कर्मचारि बिबरण</h1>
-<div class="left_content">
-    <div class="title"><p>जनप्रतिनिधिहरु</p></div>
-    <ul style="list-style-type: none;">
-        {% for pubrep in pub_reps %}
-        <li><a href="{% url 'person:profile_view' pub_emp=2 pk=pubrep.id%}"> {{ pubrep.get_full_name }} </a></li>
-        {% endfor %}
-    </ul>
 
-</div>
-<div class="middle_content">
-    <div class="title"><p>{{title}}</p></div>
-    <div class="person_details">
-        <p> {{person_object.get_full_name}} </p>
-        <p> {{person_object.post}} </p>
-        <p> {{person_object.mobile_number}} </p>
-
-        <!-- <p> {{person_object.involved_committees.all}} </p> -->
+<div class="main_content">
+    <!-- Left Content: Public Representatives -->
+    <div class="left_content">
+        <div class="title"><p>जनप्रतिनिधिहरु</p></div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>नाम थर</th>
+                    <th>वडा</th>
+                    <th>पद</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pubrep in pub_reps %}
+                <tr>
+                    <td><a href="{% url 'person:profile_view' pub_emp=2 pk=pubrep.id %}">{{ pubrep.get_full_name }}</a></td>
+                    <td>{{ pubrep.get_ward_display }}</td>  <!-- Assuming 'ward' is an attribute of pubrep -->
+                    <td> {{ pubrep.post }} </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-</div>
-<div class="right_content">
-    <div class="title"><p>कर्मचारिहरु</p></div>
-    <ul style="list-style-type: none;">
-        {% for emp in employees %}
-        <li><a href="{% url 'person:profile_view' pub_emp=1 pk=emp.id%}"> {{emp.get_full_name}} </a></li>
-        {% endfor %} 
-    </ul>
+
+    <!-- Middle Content: Selected Person Details -->
+    <div class="middle_content">
+        <div class="title"><p>{{title}}</p></div>
+        <div class="person_details">
+            {% if person_object.profile_image %}
+            <img src="{{ person_object.profile_image.url }}" alt="profile_image">
+            {% endif %}
+            <p>{{ person_object.get_full_name }}</p>
+            <p>{{ person_object.post }}</p>
+            <p>{{ person_object.mobile_number }}</p>
+            <!-- <p>{{ person_object.involved_committees.all }}</p> -->
+        </div>
+    </div>
+
+    <!-- Right Content: Employees -->
+    <div class="right_content">
+        <div class="title"><p>कर्मचारिहरु</p></div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>नाम थर</th>
+                    <th>पद</th>
+                    <th>शाखा</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for emp in employees %}
+                <tr>
+                    <td><a href="{% url 'person:profile_view' pub_emp=1 pk=emp.id %}">{{ emp.get_full_name }}</a></td>
+                    <td>{{ emp.post }}</td>  <!-- Assuming 'position' is an attribute of employee -->
+                    <td> {{ emp.section }} </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 
 {% endblock %}

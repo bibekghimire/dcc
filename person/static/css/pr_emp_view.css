@@ -1,0 +1,140 @@
+body {
+    text-align: center;
+}
+.main_content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent scrolling on the main content */
+}
+
+/* Left and Right Content (Scrollable) */
+.left_content, .right_content {
+    width: 25%; /* Adjust width to make side sections more narrow */
+    max-height: 100%; /* Ensure these sections occupy full height */
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Make the left and right content scrollable */
+}
+
+/* Left and Right Titles */
+.left_content .title, .right_content .title {
+    font-size: 28px;  /* Increased font size */
+    font-weight: bold;
+    color: #2980b9;
+    margin-bottom: 20px;
+}
+
+/* Table Styling */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.data-table th {
+    background-color: #2980b9;
+    color: white;
+    font-size: 18px;
+}
+
+.data-table td {
+    font-size: 18px; /* Increased font size */
+    color: #34495e;
+}
+
+.data-table tr:hover {
+    background-color: #f2f2f2;
+}
+
+.data-table a {
+    text-decoration: none;
+    color: #2980b9;
+    transition: color 0.3s ease;
+}
+
+.data-table a:hover {
+    color: #3498db;
+}
+
+/* Middle Content (Fixed Width, Centered on Page) */
+.middle_content {
+    width: 48%; /* Make middle content a bit larger to balance the layout */
+    max-height: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow-y: auto; /* Ensure middle content is scrollable if it overflows */
+}
+
+.middle_content .title {
+    font-size: 32px;  /* Increased font size */
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.person_details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.person_details p {
+    font-size: 32px; /* Larger text */
+    color: #34495e;
+    margin: 15px 0;
+}
+
+/* Profile Picture Styling */
+.person_details img {
+    width: 260px; /* Increased size of image */
+    height: 260px; /* Increased size of image */
+    border-radius: 20%;  /* Border radius increased to 20% */
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .main_content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .left_content, .right_content, .middle_content {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .left_content .title, .right_content .title, .middle_content .title {
+        font-size: 24px; /* Adjusted font size for smaller screens */
+    }
+
+    .data-table th, .data-table td {
+        font-size: 16px; /* Adjusted font size for smaller screens */
+        padding: 10px;
+    }
+
+    .person_details p {
+        font-size: 18px; /* Adjusted font size */
+    }
+
+    .person_details img {
+        width: 140px; /* Adjusted image size for mobile */
+        height: 140px; /* Adjusted image size for mobile */
+    }
+}

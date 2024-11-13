@@ -1,0 +1,67 @@
+.contents .more_links {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    gap: 20px; /* Space between the boxes */
+    justify-content: flex-start; /* Align to the left */
+}
+
+/* Style for each clickable box */
+.contents .more_links .box {
+    width: 150px; /* Set the box width */
+    height: 150px; /* Set the box height */
+    background-color: #4CAF50; /* Background color of the box */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Style for links inside the box */
+.contents .more_links .box a {
+    color: #fff; /* White text color */
+    font-size: 16px; /* Font size */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Hover effect for the boxes */
+.contents .more_links .box:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: translateY(-5px); /* Slight lift effect */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    /* For screens narrower than 768px, stack links vertically */
+    .contents .more_links {
+        flex-direction: column; /* Stack vertically */
+        align-items: flex-start; /* Align to the left */
+    }
+
+    .contents .more_links .box {
+        width: 100%; /* Make each box take the full width */
+        height: auto; /* Let the height adjust automatically */
+        padding: 20px;
+    }
+
+    .contents .more_links .box a {
+        font-size: 18px; /* Adjust font size for better readability */
+    }
+}
+
+@media (max-width: 480px) {
+    /* For very small screens (e.g., mobile phones) */
+    .contents .more_links .box {
+        width: 100%; /* Full width on mobile screens */
+        height: auto; /* Let the height be automatic */
+    }
+
+    .contents .more_links .box a {
+        font-size: 14px; /* Smaller font size */
+    }
+}

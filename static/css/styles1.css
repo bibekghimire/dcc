@@ -1,5 +1,6 @@
 body{
     background-color: rgb(150, 151, 201);
+    
 }
 
 .TitleBanner{
@@ -23,10 +24,14 @@ body{
 
 .TitleBanner .content{
     display: flex;
-    flex-direction: column;
-    border:2px solid white;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 2px solid white;
     flex-grow: 3;
     text-align: left;
+    .municipal-name {
+        margin-left: 2rem;
+    }
     #name{
         margin:0px;
         color: rgb(196, 11, 11);
@@ -47,5 +52,70 @@ body{
         margin: 4px;
         border: 2px solid black;
         box-shadow: inset;
+    }
+}
+
+.container {
+    margin: 10px;
+    display: grid; /* Use grid instead of flexbox */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* This will create a responsive grid */
+    gap: 5px; /* Small gap between the boxes */
+    width: 95%;
+    
+}
+
+/* Style for each box */
+.box {
+    min-width: 300px;
+    margin:10px;
+    background-color: #3498db;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 200px;
+    transition: background-color 0.3s ease;
+}
+
+/* Styling for the anchor text inside each box */
+.box a {
+    color: white;
+    font-size: 40px;
+    font-weight: bolder;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+}
+
+/* Hover effect for the boxes */
+.box:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 2100px) {
+    /* For screens narrower than 700px, show 2 boxes per row */
+    .container {
+        grid-template-columns: repeat(4, 1fr); /* 2 boxes per row */
+    }
+}
+@media (max-width: 1600px) {
+    /* For screens narrower than 700px, show 2 boxes per row */
+    .container {
+        grid-template-columns: repeat(3, 1fr); /* 2 boxes per row */
+    }
+}
+@media (max-width: 900px) {
+    /* For screens narrower than 700px, show 2 boxes per row */
+    .container {
+        grid-template-columns: repeat(2, 1fr); /* 2 boxes per row */
+    }
+}
+
+@media (max-width: 500px) {
+    /* For screens narrower than 500px, show 1 box per row */
+    .container {
+        grid-template-columns: 1fr; /* 1 box per row */
     }
 }

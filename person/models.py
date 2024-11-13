@@ -37,7 +37,7 @@ class Choices:
         return[
             (1,'अध्यक्ष'),
             (2,'उपाध्यक्ष'),
-            (3,'प्रमुख प्रसाशकीय अधिकृत')
+            (3,'प्रमुख प्रशासकीय अधिकृत')
         ]
     @classmethod
     def male_female_choices(cls):
@@ -96,6 +96,7 @@ class PersonalInfo(models.Model):
                            default=1,
                            related_name='%(class)s_personalinfo')
     status=models.IntegerField(choices=Choices.StatusChoices, default=1)
+    profile_image = models.ImageField(upload_to='profile_images/', blank=True, null=True)
     weight = models.IntegerField(choices=Choices.IntegerChoices100, default=1)
     def get_full_name(self):
         return f"{self.first_name} {self.last_name}"

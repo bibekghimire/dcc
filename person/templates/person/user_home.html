@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block app_css %}
+        <link rel="stylesheet" href="{% static 'css/person_event.css' %}">
+    {% endblock %}
+
+{% block contents %}
+{% if user.is_authenticated %}
+
+<div class="main_content">
+    <div class="sidebar">
+        <div class="side-profile">
+            <p>{{ person.post }}</p>
+            <p>{{ person.get_full_name }}</p>
+            <p>{{ person.mobile_number }}</p>
+        </div>
+        <div class="events">
+            <h1>हालको कार्यक्रम</h1>
+            <p>कार्यक्रमः {{current_event.name}}</p>
+            <p>स्थानः {{current_event.event_location}}</p>
+    
+        </div>
+    </div>
+    <div class="events_contents">
+        <h1>कार्यक्रमहरु</h1>
+        <table>
+            <tr>
+                <th>नाम</th>
+                <th>मिति</th>
+                <th>समय देखि</th>
+                <th>सम्म</th>
+                <th>स्थान</th>
+                <th>engdate</th>
+            </tr>
+            {% for event in events %}
+                <tr>
+                    <td>{{ event.name}}</td>
+                    <td>{{event.str_date}}</td>
+                    <td>{{ event.event_time }}</td>
+                    <td> {{ event.end_time}} </td>
+                    <td>{{ event.event_location}}</td>
+                    <td>{{ event.ev_date}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% else %}
+    <div class="nologin">
+        <h1>you are not authorized to see this</h1>
+        <div class="login-link">
+            <p><a href="{% url 'login' %}">Log In</a></p>
+          </div>
+    </div>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

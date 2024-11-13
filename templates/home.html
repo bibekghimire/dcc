@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title></title>
+{% endblock %}
+
+{% block app_css %}
+    <link rel="stylesheet" href="{% static '/css/styles1.css' %}">
+{% endblock %}
+
+{% block contents %}
+    <!-- authincate user -->
+    {% if user.is_authenticated %}
+    <div class="container">
+        <div class="box">
+            <a href="{% url 'person:event_view' person=1 %}">अध्यक्ष</a>
+        </div>
+        <div class="box"><a href="{% url 'person:event_view' person=2 %}">उपाध्यक्ष</a></div>
+        <div class="box"><a href="{% url 'person:event_view' person=3 %}">प्रमुख प्रशासकीय अधिकृत</a></div>
+        <div class="box"><a href="{% url 'services:home' %}">नागरिक वडापत्र</a></div>
+        <div class="box">
+            <a href="{% url 'person:profile_view' pub_emp=2 pk=0 %}">जनप्रतिनिधिहरु</a>
+        </div>
+        <div class="box">
+            <a href="{% url 'person:profile_view' pub_emp=1 pk=0 %}">कर्मचारिहरु</a>
+        </div>
+        <div class="box">
+            <a href="{% url 'section_committee' type=0 pk=0 %}">शाखाहरु</a>
+        </div>
+        <div class="box">
+            <a href="{% url 'section_committee' type=0 pk=0 %}">विषयगत समितिहरु</a>
+        </div>
+        <div class="box">
+            <a href="{% url 'section_committee' type=0 pk=0 %}">कार्यपालिका</a>
+        </div>
+        <div class="box"><a href="{% url 'more_view' %}">अन्य विवरण</a></div>
+    </div>
+
+    {% else %}
+    <div class="container">
+        <div class="box"><a href="{% url 'services:home' %}">नागरिक वडापत्र</a></div>
+        <div class="box"><a href="{% url 'more_view' %}">थप विवरण</a></div>
+    </div>
+    {% endif %}
+
+{% endblock %}
