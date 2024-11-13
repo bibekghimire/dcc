@@ -10,7 +10,17 @@
         {% block app_css %}
         {% endblock %}
     </head>
-    <body>
+    <body 
+    data-is-logged-in="{% if user.is_authenticated %}true{% else %}false{% endif %}"
+    data-user-role="{% if user.is_superuser %}
+                      admin
+                    {% elif is_cao %}
+                      cao
+                    {% elif is_chairman %}
+                      chairman
+                    {% else %}
+                      user
+                    {% endif %}">
         <div class="TitleBanner">
             <div class="logo"> 
                <a href="{% url 'annapurnahome' %}"><img src="{% static 'images/emblemnepal.png' %}" alt="emblem nepal" ></a> 
@@ -44,7 +54,7 @@
         <div class="footer">
             <footer>&copy; 2024 Bibek Ghimire</footer>
         </div>
-   
+        <script src="{% static 'js/inactivity_timeout.js' %}"></script>
     </body>
  </html>
  

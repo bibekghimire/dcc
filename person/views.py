@@ -25,9 +25,11 @@ form_classes={
     'event':(forms.EventForm,models.Event),
 
 }
-
+@login_required
 def  UserHomeView(request):
     user=request.user
+    is_cao = request.user.groups.filter(name='cao_group').exists()
+    is_chairman = request.user.groups.filter(name='chairman_group').exists()
     now=timezone.localtime()
     if user.groups.filter(name='cao_group').exists():
         person_obj=models.Employee.objects.filter(
@@ -51,6 +53,8 @@ def  UserHomeView(request):
     else:
         return render(request, 'home.html')
     context={
+        'is_cao':is_cao,
+        'is_chairman':is_chairman,
         'person':person_obj,
         'events':events,
         'current_event':current_event,
