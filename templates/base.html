@@ -54,7 +54,9 @@
         <div class="footer">
             <footer>&copy; 2024 Bibek Ghimire</footer>
         </div>
-        <script src="{% static 'js/inactivity_timeout.js' %}"></script>
+        {% block scripts %}
+            <script src="{% static 'js/inactivity_timeout.js' %}"></script>
+        {% endblock %}
     </body>
  </html>
  

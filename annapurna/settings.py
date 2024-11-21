@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'nepali_datetime_field',
     'users',
     'services',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

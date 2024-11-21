@@ -1,11 +1,26 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block app_css %}
+<link rel="stylesheet" href="{% static 'css/service_list_style.css' %}">
+{% endblock %}
 {% block contents %}
 
     <h1> सेवाहरु</h1>
-
-    {% for service in services %}
-    <h2><a href="{% url 'services:service_view' pk=service.id %}">{{service.name}}</a></h2>
-
-    {% endfor %}
-
+    <div id="service-list" class="service-list">
+        <!-- Flashcards will be inserted here by JavaScript -->
+      </div>
+      <div id="popup" class="popup">
+        <div class="popup-content">
+          <button id="close-popup" class="close-button">Close</button>
+          <h2 id="popup-title"></h2>
+          <p><strong>Required Documents:</strong> <span id="popup-docs"></span></p>
+          <p><strong>Service Fee:</strong> <span id="popup-fee"></span></p>
+          <p><strong>Service Time:</strong> <span id="popup-time"></span></p>
+          <p><strong>Sample Documents:</strong> <span id="popup-sample-docs"></span></p>
+        </div>
+      </div>
+     
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
