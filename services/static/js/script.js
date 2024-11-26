@@ -38,13 +38,39 @@ function openPopup(service) {
   document.getElementById('popup-docs').innerText = service.required_docs || 'Not available';
   document.getElementById('popup-fee').innerText = service.serv_fee2 || 'Not available';
   document.getElementById('popup-time').innerText = service.serv_time || 'Not available';
-  document.getElementById('popup-sample-docs').innerText = service.sample_documents || 'Not available';
+
+  const sampleDocsElement = document.getElementById('popup-sample-docs');
+
+  // Clear previous iframe (if any)
+  const existingIframe = document.getElementById('sample-doc-iframe');
+  if (existingIframe) {
+    existingIframe.remove();
+  }
+
+  // if (service.file_url) {
+  //   // Add a clickable label and embed the PDF in an iframe
+  //   sampleDocsElement.innerHTML = `<span>Sample Document:</span>`;
+  //   const iframe = document.createElement('iframe');
+  //   iframe.id = 'sample-doc-iframe';
+  //   iframe.src = service.file_url;
+  //   iframe.width = '100%';
+  //   iframe.height = '400px';
+  //   iframe.style.border = '1px solid #ccc';
+  //   sampleDocsElement.appendChild(iframe);
+  // } else {
+  //   sampleDocsElement.innerText = 'Not available';
+  // }
 
   // Show the popup
   popup.style.display = 'flex';
 
   // Reset and start the inactivity timer
   resetPopupTimeout();
+  document.addEventListener('mousemove', resetPopupTimeout);
+    document.addEventListener('keypress', resetPopupTimeout);
+    document.addEventListener('click', resetPopupTimeout);
+    document.addEventListener('scroll', resetPopupTimeout);  // To detect scroll activity
+    document.addEventListener('touchstart', resetPopupTimeout);
 
   // Close popup on clicking outside
   popup.onclick = (event) => {
@@ -59,7 +85,7 @@ function resetPopupTimeout() {
   clearTimeout(popupTimeout);
 
   // Set the timeout to close the popup after 30 seconds of inactivity
-  popupTimeout = setTimeout(closePopup, 30000);
+  popupTimeout = setTimeout(closePopup, 10000);
 }
 
 // 5. Close the popup

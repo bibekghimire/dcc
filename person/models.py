@@ -50,7 +50,7 @@ class Choices:
 
 class Post(models.Model):
     name=models.CharField(verbose_name='पदनाम',max_length=100)
-    post_for=models.IntegerField(choices=Choices.catagory,default=1)
+    post_for=models.IntegerField(choices=Choices.catagory,default=1,blank=True, null=True)
     def __str__(self):
         return self.name
     class Meta:

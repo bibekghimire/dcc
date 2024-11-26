@@ -5,30 +5,54 @@
 {% endblock %}
 
 {% block contents %}
-<h1> कार्यपालिका/ समितिहरु तथा शाखाहरु</h1>
+<h1><a href="{% url 'section_committee' type=0 pk=0 %}"> कार्यपालिका/ समितिहरु तथा शाखाहरु</a></h1>
 
 <!-- Left Column: Subject Committees -->
 <div class="container">
     <div class="left_column">
         <p>विषयगत समितिहरु</p>
-        <ul>
-            {% for committee in committees %}
-                <li><a href="{% url 'section_committee' type=1 pk=committee.id %}">{{committee.name}}</a></li>
-            {% endfor %}
-        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>समिति नाम</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for committee in committees %}
+                    <tr>
+                        <td><a href="{% url 'section_committee' type=1 pk=committee.id %}">{{ committee.name }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
     
     <!-- Middle Column: Display Active Committee or Section Details -->
     <div class="middle_column">
         {% if type == 0 %}
             <p class="title">कार्यपालिका</p>
-            <ul>
-            {% for member in active_committee %}
-                <li>{{ member.get_full_name }}</li>
-            {% endfor %}
-            </ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>नाम</th>
+                        <th>पद</th>
+                        <th>वडा</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for member in active_committee %}
+                        <tr>
+                            <td>{{ member.get_full_name }}</td>
+                            <td>{{ member.post }}</td>
+                            <td>{{ member.ward }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         {% elif type == 1 %}
             <p class="title">विषयगत समिति: {{ active_committee.name }}</p>
+            <p>संयोजकः {{ active_committee.coordinator }}</p>
+            <p>सदस्य सचिवः {{ active_committee.secretary }}</p>
             <table>
                 <thead>
                     <tr>
@@ -73,11 +97,20 @@
     <!-- Right Column: Sections -->
     <div class="right_column">
         <p>शाखाहरु</p>
-        <ul>
-            {% for section in sections %}
-                <li><a href="{% url 'section_committee' type=2 pk=section.id %}">{{section.name}}</a></li>
-            {% endfor %}
-        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>शाखा नाम</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for section in sections %}
+                    <tr>
+                        <td><a href="{% url 'section_committee' type=2 pk=section.id %}">{{ section.name }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
 

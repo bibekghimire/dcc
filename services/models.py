@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-from person.models import Employee,Section
+from person.models import Employee,Section, Post
 def file_upload_to(instance,filename):
     return 'services/sample_documents/{0}'.format(filename)
 
@@ -23,6 +23,17 @@ class Service(models.Model):
                                       upload_to=file_upload_to,
                                       null=True
                                       )
+    grievence_to=models.ForeignKey(Post,
+                                   verbose_name="गुनासो सुन्ने अधिकारी",
+                                   on_delete=models.RESTRICT,
+                                   related_name='grievences',
+                                   null=True,
+                                   )
 
     def __str__(self):
         return self.name 
+    def get_sample_document_url(self):
+        if self.sample_documents:
+            print(self.sample_documents.url)
+            return self.sample_documents.url
+        return None
