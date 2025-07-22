@@ -35,7 +35,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-j7+36+f+b93wp+s3cgn64=)z4b
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = False
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','localhost','192.168.0.110']
 
@@ -91,10 +91,10 @@ WSGI_APPLICATION = 'annapurna.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
     #     'NAME': 'annapurna_db',
@@ -111,11 +111,11 @@ DATABASES = {
     #     'HOST': 'localhost',
     #     'PORT': '3306',
     # }
-    'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL'),
-        conn_max_age=500,
-        conn_health_checks=True,
-    )
+    # 'default': dj_database_url.config(
+    #     default=os.getenv('DATABASE_URL'),
+    #     conn_max_age=500,
+    #     conn_health_checks=True,
+    # )
 }
 
 
